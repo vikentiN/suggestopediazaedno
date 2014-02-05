@@ -18,6 +18,7 @@
   <script src="js/config.js"></script>
   <script src="js/skel.min.js"></script>
   <script src="js/skel-panels.min.js"></script>
+  <script src="js/formquery.js"></script>
   <noscript>
     <link rel="stylesheet" href="css/skel-noscript.css">
     <link rel="stylesheet" href="css/style.css">
@@ -142,9 +143,9 @@
       <h2>Имаш въпроси? <strong>Свържи се с нас:</strong></h2>
     </header>
     <div class="row">
-      <div class="6u">
+      <div id="formdiv" class="6u">
         <section>
-          <form method="post" action="#">
+          <form method="post" action="" id="contactform">
             <div class="row half">
               <div class="6u"><input name="name" placeholder="Име" class="text"
                                      type="text"></div>
@@ -156,7 +157,7 @@
               </div>
             </div>
             <div class="row half">
-              <div class="12u"><a href="#" class="button button-icon fa fa-envelope">Изпрати</a></div>
+              <div class="12u"><input type="submit" class="button button-icon fa fa-envelope" value="Изпрати"></div>
             </div>
           </form>
         </section>
