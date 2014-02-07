@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: http://suggestopediazaedno.com/sitemap.xml
