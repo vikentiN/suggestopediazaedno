@@ -17,7 +17,7 @@ $(document).ready(function () {
 
     /* wichtig!
      sonst schickt der browser das formular ab und
-     und ruft die seite auf die bei action="" hinterlegt wurde.
+     und ruft die seite auf die bei action="#" hinterlegt wurde.
      dann verlässt er nämlich die bisherige seite... */
     return false;
 
