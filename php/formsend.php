@@ -1,9 +1,10 @@
-name=abcd&email=ng_agi@abv.bg&message=ala bala
+// try to block post req
+if ($_SERVER['REQUEST_METHOD']) == 'POST') die();
+
 ini_set('display_errors', 'On');
 error_reporting(E_ALL);
 
 $errors = '';
-$myemail = 'an.velinska@gmail.com';
 if(empty($_POST['name'])  ||
    empty($_POST['email']) ||
    empty($_POST['message']))
@@ -31,7 +32,7 @@ $email_address))
 
 if (empty($errors))
 {
-$to = 'an.velinska@gmail.com';
+$to = 'elena@suggestopediazaedno.com';
 $email_subject = "Contact form submission: $name";
 $email_body = "You have received a new message. ".
 " Here are the details:\n Name: $name \n ".

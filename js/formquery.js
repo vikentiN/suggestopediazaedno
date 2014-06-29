@@ -7,7 +7,7 @@ $(document).ready(function () {
      'name' und 'email' sind in der data-zeile die variablen für das php-skript */
     $.ajax({
       type: "POST",
-      url: "php/formsend.php",
+/*      url: "php/formsend.php",     */
       data: "name=" + $("#name").val() + "&email=" + $("#email").val() + "&message=" + $("#message").val(),
       success: function (msg) {
         /* form-div verstecken, seite nachladen & wieder einblenden (2000 ms) */
