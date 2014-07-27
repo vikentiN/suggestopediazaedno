@@ -10,24 +10,83 @@
 	RewriteRule .* - [F,L]
 </IfModule>
 
+# query strings
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	RewriteCond %{QUERY_STRING} (\"|%22).*(<|>|%3) [NC,OR]
+	RewriteCond %{QUERY_STRING} (javascript:).*(\;) [NC,OR]
+	RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3) [NC,OR]
+	RewriteCond %{QUERY_STRING} (\\|\.\./|`|=\'$|=%27$) [NC,OR]
+	RewriteCond %{QUERY_STRING} (\;|\'|\"|%22).*(union|select|insert|drop|update|md5|benchmark|or|and|if) [NC,OR]
+	RewriteCond %{QUERY_STRING} (base64_encode|localhost|mosconfig) [NC,OR]
+	RewriteCond %{QUERY_STRING} (boot\.ini|echo.*kae|etc/passwd) [NC,OR]
+	RewriteCond %{QUERY_STRING} (GLOBALS|REQUEST)(=|\[|%) [NC]
+	RewriteRule .* - [F]
+</IfModule>
+
+# user agents
+<IfModule mod_setenvif.c>
+	# SetEnvIfNoCase User-Agent ^$ keep_out
+	SetEnvIfNoCase User-Agent (binlar|casper|cmsworldmap|comodo|diavol|dotbot|feedfinder|flicky|ia_archiver|jakarta|kmccrew|nutch|planetwork|purebot|pycurl|skygrid|sucker|turnit|vikspider|zmeu) keep_out
+	<limit GET POST PUT>
+		Order Allow,Deny
+		Allow from all
+		Deny from env=keep_out
+	</limit>
+</IfModule>
+
+# disallow trace and track
+<ifModule mod_rewrite.c>
+	RewriteCond %{REQUEST_METHOD} ^(TRACE|TRACK)
+	RewriteRule .* - [F]
+</IfModule>
+
+# 5G:[REQUEST STRINGS]
+<IfModule mod_alias.c>
+	RedirectMatch 403 (https?|ftp|php)\://
+	RedirectMatch 403 /(https?|ima|ucp)/
+	RedirectMatch 403 /(Permanent|Better)$
+	RedirectMatch 403 (\=\\\'|\=\\%27|/\\\'/?|\)\.css\()$
+	RedirectMatch 403 (\,|\)\+|/\,/|\{0\}|\(/\(|\.\.\.|\+\+\+|\||\\\"\\\")
+	RedirectMatch 403 \.(cgi|asp|aspx|cfg|dll|exe|jsp|mdb|sql|ini|rar)$
+	RedirectMatch 403 /(contac|fpw|install|pingserver|register)\.php$
+	RedirectMatch 403 (base64|crossdomain|localhost|wwwroot|e107\_)
+	RedirectMatch 403 (eval\(|\_vti\_|\(null\)|echo.*kae|config\.xml)
+	RedirectMatch 403 \.well\-known/host\-meta
+	RedirectMatch 403 /function\.array\-rand
+	RedirectMatch 403 \)\;\$\(this\)\.html\(
+	RedirectMatch 403 proc/self/environ
+	RedirectMatch 403 msnbot\.htm\)\.\_
+	RedirectMatch 403 /ref\.outcontrol
+	RedirectMatch 403 com\_cropimage
+	RedirectMatch 403 indonesia\.htm
+	RedirectMatch 403 \{\$itemURL\}
+	RedirectMatch 403 function\(\)
+	RedirectMatch 403 labels\.rdf
+	RedirectMatch 403 /playing.php
+	RedirectMatch 403 muieblackcat
+</IfModule>
+
 # AddType application/x-httpd-php54 .html .php5 .php4 .php .php3 .php2 .phtml
 # try to send the bots home
 RewriteCond %{HTTP_USER_AGENT} ^.*(Ahrefs|Baidu|BlogScope|Butterfly|DCPbot|discoverybot|domain|Ezooms|ImageSearcherFree).*$ [NC,OR]
 RewriteCond %{HTTP_USER_AGENT} ^.*(ips-agent|linkdex|MJ12|Netcraft|NextGenSearchBot|SISTRIX|Sogou|soso|TweetmemeBot|Unwind|Yandex).*$ [NC]
 RewriteRule ^/?.*$ "http\:\/\/127\.0\.0\.1" [R,L]
 
-<Files 403.shtml>
-order allow,deny
-allow from all
-</Files>
-
-deny from 92.40.248.79
-deny from 41.186.56.23
-deny from 37.34.0.198
-deny from 124.82.24.218
-deny from 41.138.87.45
-deny from 195.158.69.30
-deny from 213.205.240.66
-deny from 213.205.241.134
-deny from 86.175.80.198
-deny from 86.159.93.165
+# deny bad ips
+<limit GET POST PUT>
+	Order Allow,Deny
+	Allow from all
+	deny from 92.40.248.79
+        deny from 41.186.56.23
+        deny from 37.34.0.198
+        deny from 124.82.24.218
+        deny from 41.138.87.45
+        deny from 195.158.69.30
+        deny from 213.205.240.66
+        deny from 213.205.241.134
+        deny from 86.175.80.198
+        deny from 86.159.93.165
+        deny from 212.149.252.134
+</limit>
