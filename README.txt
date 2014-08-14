@@ -11,6 +11,7 @@ regularjane, an incredibly talented photographer friend of mine. Be sure to
 check out more of her work over at deviantART:
 
 http://regularjane.deviantart.com/
+https://github.com/silentrob/hb-strongly-typed/blob/master/README.md
 
 * Not included with this download (replaced with generic placeholder images).
 I only have permission to use her work in my own onsite demos so do NOT download

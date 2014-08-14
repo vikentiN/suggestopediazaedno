@@ -22,3 +22,6 @@ overlays/
 .vagrant/
 .vagrantuser
 .repository
+.bak
+/a
+/.buildpath
