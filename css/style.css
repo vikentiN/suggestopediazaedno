@@ -968,6 +968,24 @@
 			border: 0;
 			box-shadow: 0.125em 0.175em 0 0 rgba(0,0,0,0.125);
 		}
+		
+		.is-excerpt > header > p a.fa-facebook
+		{
+				display: inline-block;
+				background: #2e57b4;
+				color: #fff;
+				width: 1.75em;
+				height: 1.75em;
+				border-radius: 1.75em;
+				line-height: 1.75em;
+				text-align: center;
+				box-shadow: 0.125em 0.185em 0 0 rgba(0,0,0,0.125);
+		}
+		
+		.is-excerpt > header > p a.fa-facebook:hover
+		{
+			background: #ed786a;
+		}
 	
 	.is-highlight
 	{
