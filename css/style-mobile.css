@@ -119,7 +119,47 @@
 			form textarea
 			{
 			}
-
+			
+/*************************/			
+/*  share buttons  */
+/*************************/	
+	#share-wrapper 
+	{
+		position: fixed;
+		top: auto;
+		bottom: 0;
+		padding: 5px 5px 0px 5px;
+		background: #EBEBEB;
+		width: 100%;
+		height:40px;
+		margin: 0px;
+		-webkit-box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+		-moz-box-shadow: 0 -1px 4px rgba(0,0,0,0.15);
+		-o-box-shadow: 0 -1px 4px rgba(0,0,0,0.15);
+		box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+	}
+	#share-wrapper ul.share-inner-wrp {
+		list-style: none;
+		margin: 0px auto;
+		padding: 0px;
+		text-align: center;
+		overflow: auto;
+	}
+	#share-wrapper li.button-wrap {
+		display: inline-block;
+		width: 32px!important;
+		margin: 0px;
+		padding: 0px;
+		margin-left:0px!important;
+	}
+	#share-wrapper li.button-wrap > a {
+		height: 32px;
+		display: inline-block;
+		text-indent: -10000px;
+		width: 32px;
+		padding-right: 0;
+		float: left;
+	}
 /*********************************************************************************/
 /* UI                                                                            */
 /*********************************************************************************/

@@ -72,11 +72,3 @@ jQuery(function() {
 		if (jQuery.browser.msie && jQuery.browser.version <= 9)
 			jQuery('form').n33_formerize();
 });
-
-function showDetails()
-{
-	var more_link = document.getElementById("more_link");
-	more_link.style.display = "none";
-	var span = document.getElementById("details");
-	span.style.display = "inline";
-}
